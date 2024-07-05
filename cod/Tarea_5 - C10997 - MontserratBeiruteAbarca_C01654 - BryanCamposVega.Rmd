@@ -31,7 +31,7 @@ options(scipen = 999)
 # guardo en una variable cada una de las dataframes
 Natalidad.Fecundidad <- read_excel("../data/datos_tarea5.xlsx", sheet = "NatalidadFecundidad")
 Poblacion <- read_excel("../data/datos_tarea5.xlsx", sheet = "Poblacion")
-EsperanzaVida <- read_excel("../data/datos_tarea5.xlsx", sheet = "Poblacion")
+EsperanzaVida <- read_excel("../data/datos_tarea5.xlsx", sheet = "EsperanzaVida")
 Nupcialidad<- read_excel("../data/datos_tarea5.xlsx", sheet = "Nupcialidad")
 ```
 
@@ -53,13 +53,77 @@ kable(head(Natalidad.Fecundidad))
 
 # Esperanza de Vida al nacer 
 
-# Nupcialidad
+```{r}
+# Transformar los datos a formato largo
+datos_esperanzavida_2 <- EsperanzaVida %>%
+  pivot_longer(cols = -`Esperanza de vida al nacimiento`, names_to = "Año", values_to = "Esperanza_vida")
 
+# Convertir la columna Año a numérica
+datos_esperanzavida_2$Año <- as.numeric(datos_esperanzavida_2$Año)
 
+# Verificar el nuevo dataframe
+view(datos_esperanzavida_2)
+```
 
+```{r}
+# Gráfico de líneas interactivo
+fig <- plot_ly(datos_esperanzavida_2, x = ~Año, y = ~Esperanza_vida, color = ~`Esperanza de vida al nacimiento`, type = 'scatter', mode = 'lines+markers') %>%
+  layout(title = 'Esperanza de vida al nacimiento (2000-2023)',
+         xaxis = list(title = 'Año'),
+         yaxis = list(title = 'Esperanza de vida'))
+fig
+```
 
 
 ```{r}
-
+summary(datos_esperanzavida_2$Esperanza_vida)
 ```
+La esperanza de vida al nacimiento ha mostrado una tendencia ascendente para todas las categorías (hombres, mujeres y total) desde el año 2000 hasta el 2023. Esta tendencia indica una mejora en la calidad de vida de las personas en áreas como atención médica que puede influír en la longevidad.
+
+Las mujeres tienen una esperanza de vida consistentemente mayor a la de los hombres, esta diferencia es notable y se mantiene a lo largo de los años, con las mujeres alcanzando una esperanza de vida superior a los 83 años en 2023, mientras que los hombres tienen una esperanza de vida en torno a los 79 años en el mismo año.
+
+# Nupcialidad
+
+```{r}
+# Transformar los datos a formato largo
+datos_nupcialidad_2 <- Nupcialidad %>%
+  pivot_longer(cols = -`Nupcialidad`, names_to = "Año", values_to = "Tasa_nupcialidad")
+
+# Convertir la columna Año a numérica
+datos_nupcialidad_2$Año <- as.numeric(datos_nupcialidad_2$Año)
+
+# Verificar el nuevo dataframe
+view(datos_nupcialidad_2)
+```
+
+```{r}
+
+fig <- plot_ly(datos_nupcialidad_2, x = ~Año, y = ~Tasa_nupcialidad, color = ~`Nupcialidad`, type = 'scatter', mode = 'lines+markers') %>%
+  layout(title = 'Nupcialidad',
+         xaxis = list(title = 'Año'),
+         yaxis = list(title = 'Nupcialidad'))
+fig
+```
+
+```{r}
+summary(datos_nupcialidad_2$Tasa_nupcialidad)
+```
+
+La media de la tasa es de 5.402 esto significa que en promedio por año, por cada mil habitantes 5 de estos contraen matrimonio. Esta tasa se ha ido reduciendo a lo largo de los años, los nuevos estilos de vida y la carga de la economía actual empuja a las personas a concentrarse más en otras áreas de vida. Este descenso se puede notar a los largo del periodo del 2000 al 2023. También es de notar que en el año 2020 se nota un decremento tanto en matrimonios civiles como católicos, esto debido a la pandemia del COVID-19 que obligó a las personas a permanecer en cuarentena. Siendo que años posteriores, la tasa volvió a su tendencia regular.
+
+## Conclusiones
+
+# Esperanza de vida
+
+- La esperanza de vida al nacimiento ha mostrado un incremento constante desde el año 2000 hasta 2023 para todas las categorías analizadas (hombres, mujeres y total). Este aumento refleja avances significativos en áreas como la salud pública, la medicina, la nutrición y las condiciones socioeconómicas.
+
+
+- Es de mucha importancia continuar trabajando en la mejora de las condiciones de vida y la atención sanitaria para asegurar que estas tendencias positivas se mantengan.
+
+
+# Nupcialidad
+
+- La reducción constante en la tasa de matrimonios desde el año 2000 hasta 2023 indica un cambio en las preferencias y estilos de vida de las personas. Factores como los nuevos estilos de vida y las presiones económicas están desviando la atención de las personas hacia otras áreas de sus vidas más que hacia el matrimonio.
+
+- A pesar del impacto negativo en 2020, la tasa de matrimonios volvió a su tendencia regular en años posteriores, lo cual indica cierta estabilidad en las tendencias matrimoniales a largo plazo, aunque en un nivel general más bajo que en décadas pasadas.
 
