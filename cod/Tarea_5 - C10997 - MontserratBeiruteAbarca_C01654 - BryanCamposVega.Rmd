@@ -39,10 +39,12 @@ Nupcialidad<- read_excel("../data/datos_tarea5.xlsx", sheet = "Nupcialidad")
 ```
 
 La presente Tarea 5 presenta un análisis descriptivo de cuatro  principales indicadores demográficos entre el 2000 al 2023 de
-la población de Costa Rica según datos del INEC.Se consideran los indicadores de Población al 30 de junio, ...
+la población de Costa Rica según datos del INEC.Se consideran los indicadores de Población al 30 de junio, Natalidad y fecundidad, Esperanza de vida al nacer y por último la Nupcialidad. Para cada uno de los indicadores, se llevó a cabo una pequeña investigación y se complementó con gráficos interactivos para poder explicar y expresar los datos de una manera visual. 
 
 
 # Población
+
+
 
 # Natalidad y Fecundidad
 
