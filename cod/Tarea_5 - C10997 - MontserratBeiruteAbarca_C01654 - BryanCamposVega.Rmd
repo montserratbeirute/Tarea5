@@ -20,7 +20,10 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r}
 # Librerias
 library(readxl)
+library(dplyr)
 library(knitr)
+library(tidyr)
+library(plotly)
 
 # Quitar notacion cientifica
 options(scipen = 999)
@@ -60,7 +63,7 @@ datos_esperanzavida_2 <- EsperanzaVida %>%
 datos_esperanzavida_2$Año <- as.numeric(datos_esperanzavida_2$Año)
 
 # Verificar el nuevo dataframe
-view(datos_esperanzavida_2)
+View(datos_esperanzavida_2)
 ```
 
 ```{r}
@@ -91,7 +94,7 @@ datos_nupcialidad_2 <- Nupcialidad %>%
 datos_nupcialidad_2$Año <- as.numeric(datos_nupcialidad_2$Año)
 
 # Verificar el nuevo dataframe
-view(datos_nupcialidad_2)
+View(datos_nupcialidad_2)
 ```
 
 ```{r}
