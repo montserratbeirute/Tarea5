@@ -1,0 +1,63 @@
+---
+title: "Tarea 5"
+author: 
+  - "Montserrat Beirute Abarca C10997"
+  - "Bryan Campos Vega C01654"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: flatly
+    toc: yes
+    toc_float:
+      collapsed: true
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+# Librerias
+library(readxl)
+library(knitr)
+
+# Quitar notacion cientifica
+options(scipen = 999)
+
+# Me aseguro que está leyendo bien el excel 
+# excel_sheets("../data/datos_tarea5.xlsx")
+
+# guardo en una variable cada una de las dataframes
+Natalidad.Fecundidad <- read_excel("../data/datos_tarea5.xlsx", sheet = "NatalidadFecundidad")
+Poblacion <- read_excel("../data/datos_tarea5.xlsx", sheet = "Poblacion")
+EsperanzaVida <- read_excel("../data/datos_tarea5.xlsx", sheet = "Poblacion")
+Nupcialidad<- read_excel("../data/datos_tarea5.xlsx", sheet = "Nupcialidad")
+```
+
+La presente Tarea 5 presenta un análisis descriptivo de cuatro  principales indicadores demográficos entre el 2000 al 2023 de
+la población de Costa Rica según datos del INEC.Se consideran los indicadores de Población al 30 de junio, ...
+
+
+# Población
+
+# Natalidad y Fecundidad
+
+```{r}
+kable(head(Natalidad.Fecundidad))
+
+```
+
+
+# Esperanza de Vida al nacer 
+
+# Nupcialidad
+
+
+
+
+
+```{r}
+
+```
+
